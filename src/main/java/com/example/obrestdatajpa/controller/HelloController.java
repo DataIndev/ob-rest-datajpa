@@ -22,7 +22,7 @@ public class HelloController {
     }
 
     //Find All Books
-    @GetMapping("/find/")
+    @GetMapping("/find")
     public List<Book> findAll(){
         return bookRepository.findAll();
     }
