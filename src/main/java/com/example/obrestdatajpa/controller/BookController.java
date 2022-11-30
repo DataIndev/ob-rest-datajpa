@@ -1,10 +1,8 @@
 package com.example.obrestdatajpa.controller;
 
-import com.example.obrestdatajpa.dto.Mensaje;
 import com.example.obrestdatajpa.entities.Book;
 import com.example.obrestdatajpa.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,15 +28,11 @@ public class BookController {
         return bookRepository.findAll();
     }
 
-    //Find book from Id
+    //Find book from id
     @GetMapping("/find/{id}")
     public ResponseEntity<Book> findWithId(@PathVariable Long id) {
         Optional<Book> book = bookRepository.findById(id);
-        if (book.isPresent()) {
-            return ResponseEntity.ok(book.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return book.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     //Update Book
