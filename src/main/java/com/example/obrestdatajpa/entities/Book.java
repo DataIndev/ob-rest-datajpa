@@ -87,4 +87,17 @@ public class Book {
     public void setOnline(boolean online) {
         this.online = online;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", pages=" + pages +
+                ", price=" + price +
+                ", releaseDate=" + releaseDate +
+                ", online=" + online +
+                '}';
+    }
 }
